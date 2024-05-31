@@ -1,0 +1,8 @@
+const XLSX = require('xlsx');
+const workbook = XLSX.readFile('sheet1.xlsx');
+const firstSheetName = workbook.SheetNames[0];
+const firstSheet = workbook.Sheets[firstSheetName];
+const range = XLSX.utils.decode_range(firstSheet['!ref']);
+const numCols = range.e.c + 1; // Adding 1 because index starts from 0
+
+console.log("Number of columns in the first sheet:", numCols);
